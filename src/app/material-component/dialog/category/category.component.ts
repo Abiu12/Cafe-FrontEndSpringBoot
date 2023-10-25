@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CategoryService } from 'src/app/services/category.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
   selector: 'app-category',
@@ -59,6 +60,14 @@ export class CategoryComponent implements OnInit {
     },(error)=>{
       this.dialogRef.close();
       console.error(error);
+      if(error.error?.message){
+        this.responseMessage = error.error?.message;
+      }
+      else{
+        this.responseMessage = GlobalConstants.genericError;
+      }
+      this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+
     })
     
   }
@@ -77,6 +86,14 @@ export class CategoryComponent implements OnInit {
     },(error)=>{
       this.dialogRef.close();
       console.error(error);
+      if(error.error?.message){
+        this.responseMessage = error.error?.message;
+      }
+      else{
+        this.responseMessage = GlobalConstants.genericError;
+      }
+      this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+
     })
     
   }
