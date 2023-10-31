@@ -37,9 +37,16 @@ export class ProductService {
   }
   delete(id:any){
     return this.httpCliente.post(
-      this.url + "/product/delete"+id,{
+      this.url + "/product/delete/"+id,{
         headers: new HttpHeaders().set('Content-Type',"application/json")
       }
     )
   }
+  getProductsByCategory(id:any){
+    return this.httpCliente.get(this.url+"/product/getByCategory/"+id);
+  }
+  getById(id:any){
+    return this.httpCliente.get(this.url+"/product/getById/"+id);
+  }
+
 }

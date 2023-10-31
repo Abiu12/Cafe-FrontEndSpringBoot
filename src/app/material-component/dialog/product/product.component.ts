@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
       {
         name:[null,[Validators.required,Validators.pattern(GlobalConstants.nameRegex)]],
         categoryId:[null,[Validators.required]],
-        price:[null,[Validators.required]],
+        price:[null,[Validators.required,Validators.pattern(GlobalConstants.priceRegex)]],
         description:[null,[Validators.required]]
       }
     );
@@ -75,7 +75,8 @@ export class ProductComponent implements OnInit {
     var formData = this.productForm.value;
     var data = {
       name: formData.name,
-      categoryId: formData.price,
+      categoryId: formData.categoryId,
+      price: formData.price,
       description:formData.description
     }
     this.productService.add(data).subscribe((response:any)=>{

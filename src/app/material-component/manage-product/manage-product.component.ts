@@ -99,7 +99,7 @@ export class ManageProductComponent implements OnInit {
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response)=>{
       this.ngxService.start();
       this.deleteProduct(values.id);
-      dialogRef.close
+      dialogRef.close();
     })
   }
 

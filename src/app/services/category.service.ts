@@ -33,4 +33,8 @@ export class CategoryService {
     )
   }
 
+  getFilteredCategorys(){
+    return this.httpCliente.get(this.url+"/category/get?filterValue=true");
+  }
+
 }
